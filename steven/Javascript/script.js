@@ -9,3 +9,5 @@
 //once user clicks on a coffee shop, second tile pops up with coffee shop menu
 //only want to show coffee options 
 //while user picks a coffee shop the third tile prints directions to shop from user location
+//Zomato apikey: badcd3120036b8f961d971380ed5d2d4
+//Google Api: AIzaSyB5Mt7YthEFFBSrDe39IwhIkCsaiGB-1GA
