@@ -1,0 +1,26 @@
+body {
+    /* background-image: url("photographer.jpg"); */
+    background-size: cover;
+}
+
+
+.row {
+    margin: 40px auto;
+}
+
+.col>div {
+    background: beige;
+    height: 120px;
+}  
+
+#local-shop {
+    border: 3px solid brown;
+}
+
+#show-menu {
+    border: 3px solid brown;
+}
+
+#location-directions {
+    border: 3px solid brown;
+}
