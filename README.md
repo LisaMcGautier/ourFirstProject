@@ -54,3 +54,13 @@ You are required to submit the following:
 * The URL of the deployed application
 
 * The URL of the GitHub repository
+
+git branch yourname - create a new branch named 'yourname'
+
+git branch - list all remote branches available
+
+git checkout yourname  - switch to branch 'yourname'
+
+when a GitHub pull request is approved into master branch, all teammates must pull new master into their branches (edited) 
+
+branch changes must be committed to save progress before switching
