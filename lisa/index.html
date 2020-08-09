@@ -8,6 +8,8 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 
     <title>Our First Project</title>
@@ -20,54 +22,69 @@
             <a href="#!" class="brand-logo center">Necesito Cafecito</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="badges.html">Components</a></li>
+                <li><a href="badges.html">Favorites</a></li>
                 <li><a href="collapsible.html">Javascript</a></li>
-                <li><a href="mobile.html">Mobile</a></li>
+                <li><a href="mobile.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="badges.html">Components</a></li>
+        <li><a href="badges.html">Favorites</a></li>
         <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <li><a href="mobile.html">Contact</a></li>
     </ul>
 
-    <div class="container">
+    <div class="hero-image">
 
-        <div class="coffee-image">
-            <!-- <img src="https://images.unsplash.com/photo-1501492673258-2bcfc17241fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="cafetera with coffee beans"> -->
-        </div>
+        <div class="container">
 
-        <div id="zip-input" class="zip-code">
-            <div class="row">
-                <form class="col s12 m8 l6 xl4">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Enter zip code</label>
-                        </div>
-                    </div>
-                </form>
+            <!-- Modal Trigger -->
+            <a class="waves-effect waves-dark btn modal-trigger green" href="#modal1">Start</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Location</h4>
+                    <p>Click "AGREE" to allow Google Maps to use your location. Otherwise, please enter your zip code.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
             </div>
+
+            <div class="coffee-image">
+                <!-- <img src="https://images.unsplash.com/photo-1501492673258-2bcfc17241fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="cafetera with coffee beans"> -->
+            </div>
+
+            <div id="zip-input" class="zip-code">
+                <div class="row">
+                    <form class="col s12 m8 l6 xl4">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                <label for="textarea1">Enter zip code</label>
+                            </div>
+                            <div class="searchBtn">
+                                <button class="btn-large waves-effect waves-light green" type="submit" name="action">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div id="local-shop" class="col s12 m12 l4 xl4 flow-text green-text">Display Local Cafeteria</div>
+                <div id="show-menu" class="col s12 m12 l4 xl4 flow-text orange-text">Display Restaurant Menu</div>
+                <div id="location-directions" class="col s12 m12 l4 xl4 flow-text blue-text">Location and Directions</div>
+
+            </div>
+
         </div>
-
-        <div class="row">
-
-            <div id="local-shop" class="col s12 m12 l4 xl4 flow-text green-text">Display Local Cafeteria</div>
-            <div id="show-menu" class="col s12 m12 l4 xl4 flow-text orange-text">Display Restaurant Menu</div>
-            <div id="location-directions" class="col s12 m12 l4 xl4 flow-text blue-text">Location and Directions</div>
-
-
-
-        </div>
-
-
-
-
-
-
 
     </div>
 
@@ -78,7 +95,11 @@
 
     <script>
         $(document).ready(function () {
-            $('.sidenav').sidenav();
+            $(".sidenav").sidenav();
+            $(".modal").modal();
+
+            //  How to close the modal pop-up box??
+            // $(".modal").modal("instance.close()");
         });
     </script>
 </body>
