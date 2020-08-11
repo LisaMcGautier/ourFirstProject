@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Mt7YthEFFBSrDe39IwhIkCsaiGB-1GA&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
 
     <title>Our First Project</title>
 </head>
@@ -80,7 +85,9 @@
 
                 <div id="local-shop" class="col s12 m12 l4 xl4 flow-text green-text">Display Local Cafeteria</div>
                 <div id="show-menu" class="col s12 m12 l4 xl4 flow-text orange-text">Display Restaurant Menu</div>
-                <div id="location-directions" class="col s12 m12 l4 xl4 flow-text blue-text">Location and Directions</div>
+                <div id="location-directions" class="col s12 m12 l4 xl4 flow-text blue-text">Location and Directions
+                    <div id="map" ></div>
+                </div>
 
             </div>
 
@@ -101,6 +108,21 @@
             //  How to close the modal pop-up box??
             // $(".modal").modal("instance.close()");
         });
+        
+      "use strict";
+
+      let map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: {
+            lat:25.7648820000,
+            lng: -80.2526540000,
+          },
+          zoom: 14
+        });
+      }
+   
     </script>
 </body>
 
