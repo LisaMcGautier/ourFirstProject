@@ -22,16 +22,16 @@
             <a href="#!" class="brand-logo center">Necesito Cafecito</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="badges.html">Favorites</a></li>
-                <li><a href="collapsible.html">Javascript</a></li>
+                <!-- <li><a href="badges.html">Favorites</a></li>
+                <li><a href="collapsible.html">Javascript</a></li> -->
                 <li><a href="mobile.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="badges.html">Favorites</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
+        <!-- <li><a href="badges.html">Favorites</a></li>
+        <li><a href="collapsible.html">Javascript</a></li> -->
         <li><a href="mobile.html">Contact</a></li>
     </ul>
 
@@ -46,7 +46,8 @@
             <div id="modal" class="modal">
                 <div class="modal-content">
                     <h4>Location</h4>
-                    <p>Click "AGREE" to allow Google Maps to use your location. Otherwise, please enter your zip code.</p>
+                    <p>Click "AGREE" to allow Google Maps to use your location. Otherwise, please enter your zip code.
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -67,7 +68,8 @@
                                 <label for="textarea1">Enter zip code</label>
                             </div>
                             <div class="searchBtn">
-                                <button class="btn-large waves-effect waves-light green" type="submit" name="action">Submit
+                                <button class="btn-large waves-effect waves-light green" type="submit"
+                                    name="action">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
                             </div>
@@ -80,7 +82,14 @@
 
                 <div id="local-shop" class="col s12 m12 l4 xl4 flow-text green-text">Display Local Cafeteria</div>
                 <div id="show-menu" class="col s12 m12 l4 xl4 flow-text orange-text">Display Restaurant Menu</div>
-                <div id="location-directions" class="col s12 m12 l4 xl4 flow-text blue-text">Location and Directions</div>
+                <div id="location-directions" class="col s12 m12 l4 xl4 flow-text blue-text">Location and Directions
+                    <!-- Google Map -->
+                    <div class="col-md-7">
+                        <div id="map"></div>
+                    </div>
+
+
+                </div>
 
             </div>
 
@@ -95,15 +104,7 @@
 
     <script src="script.js"></script>
 
-    <!-- <script>
-        $(document).ready(function () {
-            $(".sidenav").sidenav();
-            $(".modal").modal();
 
-            //  How to close the modal pop-up box??
-            // $(".modal").modal("instance.close()");
-        });
-    </script> -->
 </body>
 
 </html>
