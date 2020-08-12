@@ -17,6 +17,7 @@
       defer
     ></script>
 
+
     <title>Our First Project</title>
 </head>
 
@@ -99,31 +100,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $(".sidenav").sidenav();
-            $(".modal").modal();
-
-            //  How to close the modal pop-up box??
-            // $(".modal").modal("instance.close()");
-        });
-        
-      "use strict";
-
-      let map;
-
-      function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-          center: {
-            lat:25.7648820000,
-            lng: -80.2526540000,
-          },
-          zoom: 14
-        });
-      }
-   
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
