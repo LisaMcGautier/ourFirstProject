@@ -12,6 +12,7 @@
 //Zomato apikey: badcd3120036b8f961d971380ed5d2d4
 //Google Api: AIzaSyB5Mt7YthEFFBSrDe39IwhIkCsaiGB-1GA
 
+
 $(document).ready(function () {
   $(".sidenav").sidenav();
   $(".modal").modal();
@@ -21,7 +22,7 @@ $(document).ready(function () {
 });
 
 "use strict";
-
+var thePosition;
 let map;
 
 function initMap() {
@@ -45,7 +46,7 @@ if (navigator.geolocation) {
       infoWindow.setContent("Location found.");
       infoWindow.open(map);
       map.setCenter(pos);
-
+      
     },
     () => {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -67,3 +68,4 @@ infoWindow.setContent(
 infoWindow.open(map);
 }
 
+ 
