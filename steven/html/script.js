@@ -46,7 +46,8 @@ if (navigator.geolocation) {
       infoWindow.setContent("Location found.");
       infoWindow.open(map);
       map.setCenter(pos);
-      
+      var myLoc=getCurrentPosition();
+    console.log(myLoc);
     },
     () => {
       handleLocationError(true, infoWindow, map.getCenter());
