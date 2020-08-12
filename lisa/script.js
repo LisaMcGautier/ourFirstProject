@@ -2,17 +2,7 @@ $(document).ready(function () {
 
     // getLocation();
 
-    // // HTML5 geolocation pop-up message
-
-
-
-    // Add event listener zip code submit
-    $(".searchBtn").on("click", function () {
-        var thisZip = $("#zip-input").val();
-        console.log(thisZip);
-
-    });
-
+    // HTML5 geolocation pop-up message
 
     // IF latitude and longitude are retrieved from geolocation 
     function getRestaurants(latitude, longitude) {
@@ -44,15 +34,25 @@ $(document).ready(function () {
         });
 
 
-    };  getRestaurants();
+    }; getRestaurants();
 
-    // IF user enters zip code
+    // Add event listener zip code submit
+    $(".searchBtn").on("click", function () {
+        var zipCode = $("#zip-input").val();
+        console.log(zipCode);
+        getRestaurants(zipCode);
+        return false;
+
+    });
+
     function getRestaurants(zipCode) {
 
-        // var zipCode;
+        var zipCode;
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&location=" + zipCode;
+
         $.ajax({
             dataType: "json",
-            url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&location=" + zipCode,
+            url: queryURL,
             method: "GET",
             headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
         }).then(function (response) {
@@ -74,7 +74,7 @@ $(document).ready(function () {
         });
 
 
-    };  
+    };
 
 
 });
