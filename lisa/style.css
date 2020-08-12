@@ -19,31 +19,41 @@
     z-index: -1;   
   }
 
-
 .row {
     margin: 40px auto;
 }
 
-.col>div {
-    background: beige;
-    height: 120px;
+#textarea {
+    background:#D8C0A8;
+    height: 50px;
 }  
 
-#local-shop {
-    border: 3px solid brown;
+#restaurant-title {
+  border: 3px solid #654321;
 }
 
-#show-menu {
-    border: 3px solid brown;
+#location-title {
+  border: 3px solid #654321;
+}
+
+#menu-title {
+  border: 3px solid #654321;
+
+}#local-shop {
+    border: 3px solid #654321;
 }
 
 #location-directions {
-    border: 3px solid brown;
+  border: 3px solid #654321;
+}
+
+#show-menu {
+    border: 3px solid #654321;
 }
 
 /* element that contains the map. */
       #map {
         height: 100%;
-        width:50%;
-        height:245px;
+        width:100%;
+        height:300px;
       }
