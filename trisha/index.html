@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Necesito Cafecito</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper brown darken-4">
+            <span class="brand-logo center flow-text">Necesito Cafecito</span>
+        </div>
+    </nav>
+
+    <div class="hero-image">
+        <div class="container">
+
+            <div class="row">
+                <form class="col s12 m8 l6 xl4">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="zip-input" type="text" maxlength="5">
+                            <label for="zip-code">Enter zip code</label>
+                            <button class="searchBtn btn-large waves-effect waves-light green" type="submit"
+                                name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal Structure -->
+            <!-- <div id="modal" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Location</h4>
+                    <p>Please provide your zip code to search for a location</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" id="modal-ok" class="modal-close waves-effect waves-green btn-flat">OK</a>
+                </div>
+            </div> -->
+
+            <div class="row">
+
+                <div id="restaurant-title" class="col s12 m12 l10 offset-l1 x6 flow-text blue-text">
+                    <b>Display Local Restaurants</b>
+                </div>
+                <div id="local-shop" class="col s12 m12 l10 offset-l1 x6 flow-text blue-text"></div>
+
+
+                <div id="location-title" class="col s12 m12 l10 offset-l1 x6 flow-text green-text">
+                    <b>Location and Directions</b>
+                </div>
+                <div id="location-directions" class="col s12 m12 l10 offset-l1 x6 flow-text green-text">
+                    <div id="map"></div>
+                </div>
+
+                <!-- <div id="menu-title" class="col s12 m12 l10 offset-l1 x6 flow-text orange-text">
+                    <b>Display Restaurant Menu</b>
+                </div>
+                <div id="show-menu" class="col s12 m12 l10 offset-l1 x6 flow-text orange-text"></div> -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Compiled and minified JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Mt7YthEFFBSrDe39IwhIkCsaiGB-1GA&callback=initMap&libraries=&v=weekly"
+        defer></script>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
