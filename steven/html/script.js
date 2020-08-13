@@ -11,7 +11,90 @@
 //while user picks a coffee shop the third tile prints directions to shop from user location
 //Zomato apikey: badcd3120036b8f961d971380ed5d2d4
 //Google Api: AIzaSyB5Mt7YthEFFBSrDe39IwhIkCsaiGB-1GA
+$(document).ready(function () {
 
+  // getLocation();
+
+  // HTML5 geolocation pop-up message
+
+  // IF latitude and longitude are retrieved from geolocation 
+  function getRestaurants(latitude, longitude) {
+
+      // var latitude;
+      // var longitude;
+
+      $.ajax({
+          dataType: "json",
+          url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=" + latitude + "&longitude=" + longitude,
+          method: "GET",
+          headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
+      }).then(function (response) {
+
+          console.log(response);
+
+          for (var i = 0; i < 5; i++) {
+
+              // Needs to be a button or clickable element
+              var restaurantName = $("<p>");
+              // restaurantName.addClass("waves-effect waves-orange btn-flat")
+              restaurantName.text(response.businesses[i].name);
+              $("#local-shop").append(restaurantName);
+
+              // Add event listener to restaurantName
+              // materialize collapsible or collection??
+
+          }
+      });
+
+
+  }; getRestaurants();
+
+  // Add event listener zip code submit
+  $(".searchBtn").on("click", function () {
+      var zipCode = $("#zip-input").val();
+      console.log(zipCode);
+      getRestaurants(zipCode);
+      return false;
+
+  });
+//zip loop 
+  function getRestaurants(zipCode) {
+
+      var zipCode;
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&location=" + zipCode;
+
+      $.ajax({
+          dataType: "json",
+          url: queryURL,
+          method: "GET",
+          headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
+      }).then(function (response) {
+
+          console.log(response.businesses[0].location.address1);
+
+          for (var i = 0; i < 5; i++) {
+
+            
+              // Needs to be a button or clickable element
+              var restaurantName = $("<div>");
+              // restaurantName.addClass("waves-effect waves-orange btn-flat")
+              restaurantName.text(response.businesses[i].name);
+              $("#local-shop").append(restaurantName);
+              var resturantLocation=$("<div>").text(response.businesses[i].location.address1);
+              restaurantName.append(resturantLocation).css( "margin-top", "15px");           
+              // Add event listener to restaurantName
+              // materialize collapsible or collection??
+              // Add event listener to restaurantName
+              // materialize collapsible or collection??
+
+          }
+      });
+
+
+  };
+
+
+});
 
 $(document).ready(function () {
   $(".sidenav").sidenav();
@@ -22,7 +105,6 @@ $(document).ready(function () {
 });
 
 "use strict";
-var thePosition;
 let map;
 
 function initMap() {
@@ -36,6 +118,7 @@ zoom: 14
 infoWindow = new google.maps.InfoWindow(); // Try HTML5 geolocation.
 
 if (navigator.geolocation) {
+  
   navigator.geolocation.getCurrentPosition(
     position => {
       const pos = {
@@ -46,8 +129,17 @@ if (navigator.geolocation) {
       infoWindow.setContent("Location found.");
       infoWindow.open(map);
       map.setCenter(pos);
-      var myLoc=getCurrentPosition();
-    console.log(myLoc);
+      
+            // Create a marker and center map on user location
+            marker = new google.maps.Marker({
+              position: pos,
+              draggable: true,
+              animation: google.maps.Animation.DROP,
+              map: map
+          });
+
+          map.setCenter(pos);
+      
     },
     () => {
       handleLocationError(true, infoWindow, map.getCenter());

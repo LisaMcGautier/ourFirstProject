@@ -1,50 +1,61 @@
-
-  .hero-image {
-
-    display: block;
-    position: relative;
-  }
+.hero-image {
+  display: block;
+  position: relative;
+}
   
-  .hero-image::after {
-    content: "";
-    background: url("https://images.unsplash.com/photo-1501492673258-2bcfc17241fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;   
-  }
-
+.hero-image::after {
+  content: "";
+  background: url("https://images.unsplash.com/photo-1501492673258-2bcfc17241fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
 
 .row {
-    margin: 40px auto;
+  margin: 40px auto;
 }
 
-.col>div {
-    background: beige;
-    height: 120px;
+#zip-input {
+  background:#D8C0A8;
+  height: 50px;
 }  
 
-#local-shop {
-    border: 3px solid brown;
+#restaurant-title {
+  border: 3px solid #654321;
+  
 }
 
-#show-menu {
-    border: 3px solid brown;
+#location-title {
+  border: 3px solid #654321;
+}
+
+#menu-title {
+  border: 3px solid #654321;
+
+}#local-shop {
+    border: 3px solid #654321;
+    
+    
 }
 
 #location-directions {
-    border: 3px solid brown;
+  border: 3px solid #654321;
 }
-/* Always set the map height explicitly to define the size of the div
-* element that contains the map. */
-       #map {
-        height: 100%;
-        width:100%;
-        height:345px;
-      }
+
+#show-menu {
+    border: 3px solid #654321;
+}
+
+/* element that contains the map. */
+#map {
+  height: 100%;
+  width:100%;
+  height:345px;
+}
