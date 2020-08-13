@@ -26,8 +26,24 @@
     <div class="hero-image">
         <div class="container">
 
+            <!-- Modal Trigger -->
+            <a class="waves-effect waves-dark btn modal-trigger green" href="#modal1">Modal</a>
+            
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Location Services</h4>
+                    <p>Click "AGREE" to allow Google Maps to use your location.<br>
+                        <br>Otherwise, please enter your zip code below.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" id="modal-agree" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    <a href="#!" id="modal-decline" class="modal-close waves-effect waves-red btn-flat">Decline</a>
+                </div>
+            </div>
+
             <div class="row">
-                <form class="col s12 m8 l6 xl4">
+                <form class="col s12 m8 l4 xl3">
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="zip-input" type="text" maxlength="5">
@@ -40,23 +56,16 @@
                 </form>
             </div>
 
-            <!-- Modal Structure -->
-            <!-- <div id="modal" class="modal modal-fixed-footer">
-                <div class="modal-content">
-                    <h4>Location</h4>
-                    <p>Please provide your zip code to search for a location</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" id="modal-ok" class="modal-close waves-effect waves-green btn-flat">OK</a>
-                </div>
-            </div> -->
+
 
             <div class="row">
 
                 <div id="restaurant-title" class="col s12 m12 l10 offset-l1 x6 flow-text blue-text">
                     <b>Display Local Restaurants</b>
                 </div>
-                <div id="local-shop" class="col s12 m12 l10 offset-l1 x6 flow-text blue-text"></div>
+                <div id="local-shop" class="col s12 m12 l10 offset-l1 x6 flow-text blue-text">
+                    <!-- <div id="restaurantList" class="collection"></div> -->
+                </div>
 
 
                 <div id="location-title" class="col s12 m12 l10 offset-l1 x6 flow-text green-text">

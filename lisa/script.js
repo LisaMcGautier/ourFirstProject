@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    $('.modal').modal();
+
     // getLocation();
 
     // HTML5 geolocation pop-up message
@@ -23,18 +25,20 @@ $(document).ready(function () {
 
                 // Needs to be a button or clickable element
                 var restaurantName = $("<p>");
+               
                 // restaurantName.addClass("waves-effect waves-orange btn-flat")
                 restaurantName.text(response.businesses[i].name);
+
                 $("#local-shop").append(restaurantName);
 
-                // Add event listener to restaurantName
-                // materialize collapsible or collection??
-
             }
+
         });
 
-
     }; getRestaurants();
+
+// Add event listener to restaurantName
+// materialize collapsible or collection??
 
     // Add event listener zip code submit
     $(".searchBtn").on("click", function () {
@@ -63,21 +67,32 @@ $(document).ready(function () {
 
                 // Needs to be a button or clickable element
                 var restaurantName = $("<p>");
-                // restaurantName.addClass("waves-effect waves-orange btn-flat")
                 restaurantName.text(response.businesses[i].name);
-                $("#local-shop").append(restaurantName);
+                // restaurantName.addClass("waves-effect waves-orange btn-flat")
 
-                // Add event listener to restaurantName
-                // materialize collapsible or collection??
+                var restaurantLocation = $("<p>");
+                restaurantLocation = (response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
+
+                $("#local-shop").append(restaurantName);
+                $("#local-shop").append(restaurantLocation);
+
+                // Needs to be a button or clickable element
+                // var restaurantTile = $("<a>");
+                // restaurantTile.attr("href", "#!");
+                // restaurantTile.addClass("collection-item")
+
+                // $("restaurantList").append(restaurantTile);
 
             }
-        });
 
+        });
 
     };
 
-
 });
+
+// Add event listener to restaurantName
+// materialize collapsible or collection??
 
 "use strict";
 
