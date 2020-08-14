@@ -27,7 +27,7 @@
         <div class="container">
 
             <!-- Modal Trigger -->
-            <a class="waves-effect waves-dark btn modal-trigger green" href="#modal1">Modal</a>
+            <a class="waves-effect waves-dark btn modal-trigger green" href="#modal1">Start</a>
             
             <!-- Modal Structure -->
             <div id="modal1" class="modal modal-fixed-footer">
@@ -40,6 +40,16 @@
                     <a href="#!" id="modal-agree" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                     <a href="#!" id="modal-decline" class="modal-close waves-effect waves-red btn-flat">Decline</a>
                 </div>
+            </div>
+
+            <div id="geolocation-result" class="geolocation">
+                <p>
+                    Your location is <span id="latitude">0.00</span>°
+                    latitude by <span id="longitude">0.00</span>° longitude.
+                  </p>
+                  <button id="get-location">
+                    Get My Location
+                  </button>
             </div>
 
             <div class="row">
