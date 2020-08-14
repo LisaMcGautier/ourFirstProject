@@ -29,6 +29,7 @@
 
 #restaurant-title {
   border: 3px solid #654321;
+  
 }
 
 #location-title {
@@ -37,10 +38,11 @@
 
 #menu-title {
   border: 3px solid #654321;
-}
 
-#local-shop {
+}#local-shop {
     border: 3px solid #654321;
+    
+    
 }
 
 #location-directions {
