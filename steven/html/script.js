@@ -27,7 +27,7 @@ $(document).ready(function () {
           dataType: "json",
           url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=" + latitude + "&longitude=" + longitude,
           method: "GET",
-          headers: { "Authorization": "Bearer J9QvN6OQ52jitHHMS6Fxqe4IMunbgRHNCDArO06iy75nw2b-0o2OSP4_e7H-0HudcxFfVWxYO_UlUxWBjjihhx_ZAZeIvNFKiRr3jeGW2KuhXJ2XaT3q_mNbMeE1X3Yx" }
+          headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
       }).then(function (response) {
 
           console.log(response);
@@ -67,7 +67,7 @@ $(document).ready(function () {
           dataType: "json",
           url: queryURL,
           method: "GET",
-          headers: { "Authorization": "Bearer J9QvN6OQ52jitHHMS6Fxqe4IMunbgRHNCDArO06iy75nw2b-0o2OSP4_e7H-0HudcxFfVWxYO_UlUxWBjjihhx_ZAZeIvNFKiRr3jeGW2KuhXJ2XaT3q_mNbMeE1X3Yx" }
+          headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
       }).then(function (response) {
 
           console.log(response.businesses[0].location.address1);
