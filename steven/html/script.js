@@ -27,7 +27,7 @@ $(document).ready(function () {
           dataType: "json",
           url: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=" + latitude + "&longitude=" + longitude,
           method: "GET",
-          headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
+          headers: { "Authorization": "Bearer J9QvN6OQ52jitHHMS6Fxqe4IMunbgRHNCDArO06iy75nw2b-0o2OSP4_e7H-0HudcxFfVWxYO_UlUxWBjjihhx_ZAZeIvNFKiRr3jeGW2KuhXJ2XaT3q_mNbMeE1X3Yx" }
       }).then(function (response) {
 
           console.log(response);
@@ -67,7 +67,7 @@ $(document).ready(function () {
           dataType: "json",
           url: queryURL,
           method: "GET",
-          headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
+          headers: { "Authorization": "Bearer J9QvN6OQ52jitHHMS6Fxqe4IMunbgRHNCDArO06iy75nw2b-0o2OSP4_e7H-0HudcxFfVWxYO_UlUxWBjjihhx_ZAZeIvNFKiRr3jeGW2KuhXJ2XaT3q_mNbMeE1X3Yx" }
       }).then(function (response) {
 
           console.log(response.businesses[0].location.address1);
@@ -80,8 +80,8 @@ $(document).ready(function () {
               // restaurantName.addClass("waves-effect waves-orange btn-flat")
               restaurantName.text(response.businesses[i].name);
               $("#local-shop").append(restaurantName);
-              var resturantLocation=$("<div>").text(response.businesses[i].location.address1);
-              restaurantName.append(resturantLocation).css( "margin-top", "15px");           
+              var resturantLocation=$("<div>").text(response.businesses[i].location.address1)//add click event and change cursor to make sure it's clickable 
+              restaurantName.append(resturantLocation).css( "margin-top", "10px");           
               // Add event listener to restaurantName
               // materialize collapsible or collection??
               // Add event listener to restaurantName
@@ -103,7 +103,7 @@ $(document).ready(function () {
   //  How to close the modal pop-up box??
   // $(".modal").modal("instance.close()");
 });
-
+const userPos = JSON.parse(localStorage.getItem("userPos"))||{}//use this for function to show resturants nearest user
 "use strict";
 let map;
 
@@ -125,6 +125,7 @@ if (navigator.geolocation) {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      localStorage.setItem("userPos",JSON.stringify(pos)) //
       infoWindow.setPosition(pos);
       infoWindow.setContent("Location found.");
       infoWindow.open(map);
