@@ -2,21 +2,19 @@ $(document).ready(function () {
 
     $('.modal').modal();
 
-    // getLocation();
+    "use strict";
+    let map;
+    initMap();
 
     // HTML5 geolocation pop-up message
 
     // IF latitude and longitude are retrieved from geolocation
 
-   
-    
     function restaurantsByCoordinates(latitude, longitude) {
 
-    // var latitude = latText.innerText;
-    // var longitude = longText.innerText;
-    console.log(latitude, longitude);
+        console.log(latitude, longitude);
 
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=" + latitude + "&longitude=" + longitude;
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=" + latitude + "&longitude=" + longitude;
 
         $.ajax({
             dataType: "json",
@@ -32,12 +30,11 @@ $(document).ready(function () {
                 // Needs to be a button or clickable element
                 var restaurantName = $("<p>");
                 restaurantName.text(response.businesses[i].name);
-                // restaurantName.addClass("waves-effect waves-orange btn-flat")
-
-                var restaurantLocation = $("<p>");
-                restaurantLocation = (response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
-
                 $("#local-shop").append(restaurantName);
+
+                var restaurantLocation = $("<a>");
+                restaurantLocation.text(response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
+                restaurantLocation.attr("href", "#!");
                 $("#local-shop").append(restaurantLocation);
 
                 // Needs to be a button or clickable element
@@ -54,8 +51,8 @@ $(document).ready(function () {
 
     };
 
-    
-// Add event listener to restaurantName
+
+    // Add event listener to restaurantName
 
     // Add event listener zip code submit
     $(".searchBtn").on("click", function () {
@@ -84,12 +81,11 @@ $(document).ready(function () {
 
                 var restaurantName = $("<p>");
                 restaurantName.text(response.businesses[i].name);
-                // restaurantName.addClass("waves-effect waves-orange btn-flat")
-
-                var restaurantLocation = $("<p>");
-                restaurantLocation = (response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
-
                 $("#local-shop").append(restaurantName);
+
+                var restaurantLocation = $("<a>");
+                restaurantLocation.text(response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
+                restaurantLocation.attr("href", "#!");
                 $("#local-shop").append(restaurantLocation);
 
                 // Needs to be a button or clickable element
@@ -106,6 +102,55 @@ $(document).ready(function () {
 
     };
 
+    // let map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+                lat: 25.7648820000,
+                lng: -80.2526540000,
+            },
+            zoom: 14
+        });
+        infoWindow = new google.maps.InfoWindow(); // Try HTML5 geolocation.
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent("Location found.");
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+
+                    console.log(pos);
+
+                    restaurantsByCoordinates(pos.lat, pos.lng);
+
+                },
+                () => {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                }
+            );
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(
+            browserHasGeolocation
+                ? "Error: The Geolocation service failed."
+                : "Error: Your browser doesn't support geolocation."
+        );
+        infoWindow.open(map);
+    }
+
 });
 
 // Add event listener to restaurantName
@@ -113,73 +158,85 @@ $(document).ready(function () {
 
 "use strict";
 
+// // Instantiate your javascript function
+// niceJavascriptRoutine = null;
+
+// // Begin jQuery
+// $(document).ready(function () {
+
+//     // Your jQuery function
+//     function niceJqueryRoutine() {
+//         // some code
+//     }
+//     // Point the javascript function to the jQuery function
+//     niceJavaScriptRoutine = niceJqueryRoutine;
+
+// });
+
+// let button = document.getElementById("get-location");
+// let latitude = document.getElementById("latitude");
+// let longitude = document.getElementById("longitude");
+
+// button.addEventListener("click", function() {
+//   navigator.geolocation.getCurrentPosition(function(position) {
+//     let lat = position.coords.latitude;
+//     let long = position.coords.longitude;
+
+//     latitude.innerText = lat.toFixed(2);
+//     longitude.innerText = long.toFixed(2);
+
+//     restaurantsByCoordinates(latitude, longitude);
+
+//   });
+
+// });
 
 
-let button = document.getElementById("get-location");
-let latitude = document.getElementById("latitude");
-let longitude = document.getElementById("longitude");
+// let map;
 
-button.addEventListener("click", function() {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
+// function initMap() {
+//     map = new google.maps.Map(document.getElementById("map"), {
+//         center: {
+//             lat: 25.7648820000,
+//             lng: -80.2526540000,
+//         },
+//         zoom: 14
+//     });
+//     infoWindow = new google.maps.InfoWindow(); // Try HTML5 geolocation.
 
-    latitude.innerText = lat.toFixed(2);
-    longitude.innerText = long.toFixed(2);
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(
+//             position => {
+//                 const pos = {
+//                     lat: position.coords.latitude,
+//                     lng: position.coords.longitude
+//                 };
+//                 infoWindow.setPosition(pos);
+//                 infoWindow.setContent("Location found.");
+//                 infoWindow.open(map);
+//                 map.setCenter(pos);
 
-    restaurantsByCoordinates(latitude, longitude);
+//                 console.log(pos);
 
-  });
+//                 // restaurantsByCoordinates(latitude, longitude)
 
-});
+//             },
+//             () => {
+//                 handleLocationError(true, infoWindow, map.getCenter());
+//             }
+//         );
+//     } else {
+//         // Browser doesn't support Geolocation
+//         handleLocationError(false, infoWindow, map.getCenter());
+//     }
+// }
 
-
-
-let map;
-
-function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: {
-            lat: 25.7648820000,
-            lng: -80.2526540000,
-        },
-        zoom: 14
-    });
-    infoWindow = new google.maps.InfoWindow(); // Try HTML5 geolocation.
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            position => {
-                const pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                infoWindow.setPosition(pos);
-                infoWindow.setContent("Location found.");
-                infoWindow.open(map);
-                map.setCenter(pos);
-
-                console.log(pos);
-
-                // restaurantsByCoordinates(latitude, longitude)
-
-            },
-            () => {
-                handleLocationError(true, infoWindow, map.getCenter());
-            }
-        );
-    } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-    }
-}
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(
-        browserHasGeolocation
-            ? "Error: The Geolocation service failed."
-            : "Error: Your browser doesn't support geolocation."
-    );
-    infoWindow.open(map);
-}
+// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+//     infoWindow.setPosition(pos);
+//     infoWindow.setContent(
+//         browserHasGeolocation
+//             ? "Error: The Geolocation service failed."
+//             : "Error: Your browser doesn't support geolocation."
+//     );
+//     infoWindow.open(map);
+// }
