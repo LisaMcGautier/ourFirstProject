@@ -75,6 +75,8 @@ $(document).ready(function () {
             // console.log(response);
             // console.log(response.businesses[0].coordinates.latitude);
             // console.log(response.businesses[0].coordinates.longitude);
+            
+            $("#restaurantList").empty();
 
             for (var i = 0; i < 5; i++) {
 
@@ -124,6 +126,8 @@ $(document).ready(function () {
             // console.log(response);
             // console.log(response.businesses[0].coordinates.latitude);
             // console.log(response.businesses[0].coordinates.longitude);
+
+            $("#restaurantList").empty();
 
             for (var i = 0; i < 5; i++) {
 
