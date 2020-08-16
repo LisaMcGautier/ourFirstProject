@@ -4,26 +4,6 @@ $(document).ready(function () {
 
   var spinner = document.getElementById("spinner");
 
-  // function preloaderSpinner(display) {
-
-  //     if (restaurantsByCoordinates) {
-
-  //         //  $("#spinner").hide();
-  //         spinner.style.display = 'block';
-
-  //     } else if (restaurantsByCoordinates) {
-
-  //         //  $("#spinner").hide();
-  //         spinner.style.display = 'block';
-
-  //     }else {
-
-  //         //$("#spinner").show();
-  //         spinner.style.display = 'none';
-  //     }
-
-  // };
-
   // HTML5 geolocation pop-up message
 
   "use strict";
@@ -47,21 +27,14 @@ $(document).ready(function () {
                       lat: position.coords.latitude,
                       lng: position.coords.longitude
                   };
-                  // infoWindow.setPosition(pos);
-                  //infoWindow.setContent("Location found.");
+                  infoWindow.setPosition(pos);
+                  infoWindow.setContent("Location found.");
                   infoWindow.open(map);
                   map.setCenter(pos);
 
-                  console.log(pos);
+                  // console.log(pos);
 
                   restaurantsByCoordinates(pos.lat, pos.lng);
-                  // Create a marker and center map on user location
-                  marker = new google.maps.Marker({
-                      position: pos,
-                      draggable: true,
-                      animation: google.maps.Animation.DROP,
-                      map: map
-                  });
 
               },
               () => {
@@ -82,48 +55,13 @@ $(document).ready(function () {
               : "Error: Your browser doesn't support geolocation."
       );
       infoWindow.open(map);
-  }
-
-  function mapRestaurantLocation(restaurantName, restaurantLocation) {
-      
-
-      console.log(restaurantName, restaurantLocation);
-      var locations;
-    
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 14,
-          center: new google.maps.LatLng(25.7648820000, -80.2526540000,),// hardcoded default location
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-    
-        var infowindow = new google.maps.InfoWindow();
-    
-        var marker, i;
-    
-        for (i = 0; i < locations.length; i++) {  
-          marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            map: map
-          });
-    
-          google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-              infowindow.setContent(locations[i][0]);
-              infowindow.open(map, marker);
-            }
-          })(marker, i));
-        }
-      
-      //============================================================================
-      // Use the address here to place the Restaurant marker in Google Maps...
-
-
-  }
+  }   
+  
   // IF latitude and longitude are retrieved from geolocation
 
   function restaurantsByCoordinates(latitude, longitude) {
 
-      console.log(latitude, longitude);
+      // console.log(latitude, longitude);
 
       var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=" + latitude + "&longitude=" + longitude;
 
@@ -135,47 +73,28 @@ $(document).ready(function () {
       }).then(function (response) {
 
           // console.log(response);
+          // console.log(response.businesses[0].coordinates.latitude);
+          // console.log(response.businesses[0].coordinates.longitude);
+          
+          $("#restaurantList").empty();
 
           for (var i = 0; i < 5; i++) {
 
               spinner.style.display = 'none';
 
-              // Needs to be a button or clickable element
-
               var restaurantTile = $("<a>");
               var restaurantName = response.businesses[i].name;
               var restaurantLocation = response.businesses[i].location.address1;
+              const pos = {
+                  lat: response.businesses[i].coordinates.latitude,
+                  lng: response.businesses[i].coordinates.longitude
+              };
               restaurantTile.attr("href", "#!");
               restaurantTile.addClass("collection-item");
               restaurantTile.html(restaurantName + "<br>" + restaurantLocation);
-
-              restaurantTile.on("click", function () {
-
-                  mapRestaurantLocation(restaurantName, restaurantLocation);
-
-              });
+              restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + pos.lat + "', '" + pos.lng + "')");
 
               $("#restaurantList").append(restaurantTile);
-
-              // var restaurantName = $("<p>");
-              // restaurantName.text(response.businesses[i].name);
-              // $("#restaurantList").append(restaurantName);
-
-              // var restaurantLocation = $("<a>");
-              // restaurantLocation.text(response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
-
-              // $("#restaurantList").append(restaurantLocation);
-
-              // Needs to be a button or clickable element
-              // materialize collection??
-              // var restaurantTile = $("<a>");
-              // restaurantTile.attr("href", "#!");
-
-              // $("restaurantList").append(restaurantTile);
-
-              // Add event listener to restaurantName
-
-
 
           }
 
@@ -205,75 +124,55 @@ $(document).ready(function () {
       }).then(function (response) {
 
           // console.log(response);
+          // console.log(response.businesses[0].coordinates.latitude);
+          // console.log(response.businesses[0].coordinates.longitude);
+
+          $("#restaurantList").empty();
 
           for (var i = 0; i < 5; i++) {
 
               spinner.style.display = 'none';
 
-              // Needs to be a button or clickable element
-
               var restaurantTile = $("<a>");
               var restaurantName = response.businesses[i].name;
               var restaurantLocation = response.businesses[i].location.address1;
+              const pos = {
+                  lat: response.businesses[i].coordinates.latitude,
+                  lng: response.businesses[i].coordinates.longitude
+              };
               restaurantTile.attr("href", "#!");
               restaurantTile.addClass("collection-item");
               restaurantTile.html(restaurantName + "<br>" + restaurantLocation);
-
-              restaurantTile.on("click", function () {
-
-                  mapRestaurantLocation(restaurantName, restaurantLocation);
-
-              });
+              restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + pos.lat + "', '" + pos.lng + "')");
 
               $("#restaurantList").append(restaurantTile);
-
-              // var restaurantName = $("<p>");
-              // restaurantName.text(response.businesses[i].name);
-              // $("#restaurantList").append(restaurantName);
-
-              // var restaurantLocation = $("<a>");
-              // restaurantLocation.text(response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
-
-              // $("#restaurantList").append(restaurantLocation);
-
-              // Needs to be a button or clickable element
-              // materialize collection??
-              // var restaurantTile = $("<a>");
-              // restaurantTile.attr("href", "#!");
-
-              // $("restaurantList").append(restaurantTile);
-
-
 
           }
 
       });
 
   };
-
+ 
 });
 
-// Add event listener to restaurantName
+function mapRestaurantLocation(restaurantName, restaurantLatitude, restaurantLongitude) {
 
-// $("#local-shop").on("click", function () {
-//     var address = $(this).val();
-//     console.log(address);
-// });
+  console.log(restaurantName);
+  console.log(restaurantLatitude, restaurantLongitude);
 
-// let button = document.getElementById("get-location");
-// let latitude = document.getElementById("latitude");
-// let longitude = document.getElementById("longitude");
+  var myLatlng = new google.maps.LatLng(restaurantLatitude, restaurantLongitude);
+  var mapOptions = {
+      zoom: 16,
+      center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-// button.addEventListener("click", function() {
-//   navigator.geolocation.getCurrentPosition(function(position) {
-//     let lat = position.coords.latitude;
-//     let long = position.coords.longitude;
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      title: restaurantName
+  });
 
-//     latitude.innerText = lat.toFixed(2);
-//     longitude.innerText = long.toFixed(2);
+  // To add the marker to the map, call setMap();
+  marker.setMap(map);
 
-//     restaurantsByCoordinates(latitude, longitude);
-
-//   });
-
-// });
+}
