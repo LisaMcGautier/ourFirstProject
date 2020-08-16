@@ -75,7 +75,7 @@ $(document).ready(function () {
             // console.log(response);
             // console.log(response.businesses[0].coordinates.latitude);
             // console.log(response.businesses[0].coordinates.longitude);
-            
+
             $("#restaurantList").empty();
 
             for (var i = 0; i < 5; i++) {
@@ -162,7 +162,7 @@ function mapRestaurantLocation(restaurantName, restaurantLatitude, restaurantLon
 
     var myLatlng = new google.maps.LatLng(restaurantLatitude, restaurantLongitude);
     var mapOptions = {
-        zoom: 14,
+        zoom: 16,
         center: myLatlng
     }
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
