@@ -1,0 +1,70 @@
+*
+.hero-image {
+  display: block;
+  position: relative;
+  font-family: 'Kaushan Script', cursive;
+}
+  
+.hero-image::after {
+  content: "";
+  background: url("https://images.unsplash.com/photo-1501492673258-2bcfc17241fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+nav{
+  font-family: 'Kaushan Script', cursive;
+}
+.row {
+  margin: 40px auto;
+}
+
+#zip-input {
+  background:#654321;
+  height: 50px;
+  font-family: 'Kaushan Script', cursive;
+
+}  
+
+#restaurant-title {
+  border: 3px solid #654321;
+  font-family: 'Kaushan Script', cursive;
+}
+
+#location-title {
+  border: 3px solid #654321;
+  font-family: 'Kaushan Script', cursive;
+}
+
+#menu-title {
+  border: 3px solid #654321;
+}
+
+#local-shop {
+    border: 3px solid #654321;
+    font-family:'Patrick Hand', cursive;
+}
+
+#location-directions {
+  border: 3px solid #654321;
+  font-family:'Patrick Hand', cursive;
+}
+
+#show-menu {
+    border: 3px solid #654321;
+}
+
+/* element that contains the map. */
+#map {
+  height: 100%;
+  width:100%;
+  height:345px;
+}
