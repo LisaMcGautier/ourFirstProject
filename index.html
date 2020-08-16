@@ -8,30 +8,88 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <title>Our First Project</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Patrick+Hand&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Necesito Cafecito</title>
 </head>
 
 <body>
 
     <nav>
         <div class="nav-wrapper brown darken-4">
-            <a href="#!" class="brand-logo center">Necesito Cafecito</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">Javascript</a></li>
-                <li><a href="mobile.html">Mobile</a></li>
-            </ul>
+            <span class="brand-logo center flow-text orange-text">Necesito Cafecito</span>
         </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-    </ul>
+    <div class="hero-image">
+        <div class="container">
+            <div id="welcome" class="welcome-message brown-text text-darken-2 center-align">
+                <h1><span class="orange-text">Welcome</span> to Necesito Cafecito!</h1>
+                <br>
+            <p>Please allow geolocation services or enter your zip code to find local coffee shops.</p>
+            </div>
 
-    <div class="container">
+            <div class="row center-align">
+                <form class="col s12 m8 l4 xl3 center-align">
+                    <div class="row">
+                        <div class="input-field col s12 center-align">
+                            <input id="zip-input" type="text" maxlength="5">
+                            <label for="zip-code">Enter zip code</label>
+                            <button class="searchBtn btn-large center-align waves-effect waves-light orange" type="submit"
+                                name="action">Submit
+                                <i class="material-icons right">search</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row">
+                <div id="restaurant-title" class="col s12 m12 l10 offset-l1 x6 center-align flow-text orange-text">
+                    <b>Display Local Restaurants</b>
+                </div>
+                <div id="local-shop" class="col s12 m12 l10 offset-l1 x6 center-align light-green-text">
+
+                    <div id="restaurantList" class="collection">
+
+                        <div id="spinner" class="preloader-wrapper center active">
+                            <div class="spinner-layer spinner-green-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="location-title" class="col s12 m12 l10 offset-l1 x6 center-align flow-text orange-text">
+                    <b>Location and Directions</b>
+                </div>
+                <div id="location-directions" class="col s12 m12 l10 offset-l1 x6 flow-text green-text">
+                    <div id="map"></div>
+                </div>
+
+                <!-- <div id="menu-title" class="col s12 m12 l10 offset-l1 x6 flow-text orange-text">
+                    <b>Display Restaurant Menu</b>
+                </div>
+                <div id="show-menu" class="col s12 m12 l10 offset-l1 x6 flow-text orange-text"></div> -->
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -40,11 +98,13 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('.sidenav').sidenav();
-        });
-    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Mt7YthEFFBSrDe39IwhIkCsaiGB-1GA"></script>
+
+    <script src="script.js"></script>
+
+
 </body>
 
 </html>
