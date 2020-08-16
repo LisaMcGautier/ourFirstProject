@@ -1,6 +1,8 @@
+*
 .hero-image {
   display: block;
   position: relative;
+  font-family: 'Kaushan Script', cursive;
 }
   
 .hero-image::after {
@@ -18,21 +20,28 @@
   z-index: -1;   
 }
 
+nav{
+  font-family: 'Kaushan Script', cursive;
+}
 .row {
   margin: 40px auto;
 }
 
 #zip-input {
-  background:#D8C0A8;
+  background:#654321;
   height: 50px;
+  font-family: 'Kaushan Script', cursive;
+
 }  
 
 #restaurant-title {
   border: 3px solid #654321;
+  font-family: 'Kaushan Script', cursive;
 }
 
 #location-title {
   border: 3px solid #654321;
+  font-family: 'Kaushan Script', cursive;
 }
 
 #menu-title {
@@ -41,10 +50,12 @@
 
 #local-shop {
     border: 3px solid #654321;
+    font-family:'Patrick Hand', cursive;
 }
 
 #location-directions {
   border: 3px solid #654321;
+  font-family:'Patrick Hand', cursive;
 }
 
 #show-menu {
