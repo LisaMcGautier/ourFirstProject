@@ -1,72 +1,52 @@
-//alert user if they want to share location
-// user confirms or denies share location 
-//if user confirms geolocation of user then googlemaps api pulls location by lad and lon
-//else user enters zip code id=zip-input
-//function to listen for submit zip code
-//zomato api prints top 3 closet coffee shops
-//api targets cuban resturants only
-// user chooses any coffee shop
-//once user clicks on a coffee shop, second tile pops up with coffee shop menu
-//only want to show coffee options 
-//while user picks a coffee shop the third tile prints directions to shop from user location
-//Zomato apikey: badcd3120036b8f961d971380ed5d2d4
-//Google Api: AIzaSyB5Mt7YthEFFBSrDe39IwhIkCsaiGB-1GA
-
-
-$(document).ready(function () {
-  $(".sidenav").sidenav();
-  $(".modal").modal();
-
-  //  How to close the modal pop-up box??
-  // $(".modal").modal("instance.close()");
-});
-
-"use strict";
-var thePosition;
-let map;
-function setupInfowindow(){
-  infoWindow = new google.maps.InfoWindow(); // Try HTML5 geolocation.
-
+var x = document.getElementById("demo");
+var y = document.getElementById("demo1");
+const spinner = document.getElementById("spinner");
+function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        const pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        infoWindow.setPosition(pos);
-        infoWindow.setContent("Location found.");
-        infoWindow.open(map);
-        map.setCenter(pos);
-        var myLoc=getCurrentPosition();
-      console.log(myLoc);
-      },
-      () => {
-        handleLocationError(true, infoWindow, map.getCenter());
-      }
-    );
+    navigator.geolocation.getCurrentPosition(showPosition);
+    spinner.removeAttribute('hidden');
   } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+    x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
-function initMap() {
-map = new google.maps.Map(document.getElementById("map"), {
-center: {
-  lat:25.7648820000,
-  lng: -80.2526540000,
-},
-zoom: 14
-});
-setupInfowindow();
-}
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-infoWindow.setPosition(pos);
-infoWindow.setContent(
-  browserHasGeolocation
-    ? "Error: The Geolocation service failed."
-    : "Error: Your browser doesn't support geolocation."
-);
-infoWindow.open(map);
-}
+function showPosition(position) {
+  x.innerHTML =
+    "Latitude: " +
+    position.coords.latitude +
+    "<br>Longitude: " +
+    position.coords.longitude;
+  var latitude =  parseFloat(position.coords.latitude);
+  var longitude =parseFloat( position.coords.longitude);
+  initMap(latitude, longitude);
+  var queryURL =
+    "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
+    latitude +
+    "," +
+    longitude +
+    "&key=AIzaSyCZpN1LVa4mDWLaJe-QHtXPPOfXjeg6Ap0";
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    y.innerHTML = response.results[0].address_components[5].short_name;
+    var z = response.results[0].address_components[5].short_name;
+    var queryURL2 =
+      " https://developer.nps.gov/api/v1/parks?stateCode=" +
+      z +
+      "&api_key=wV47kSkvj2E4EXWlDq3d6TIN4Q8X39nRx1M3d3Qb";
+    $.ajax({
+      url: queryURL2,
+      method: "GET",
+    }).then(function (parks) {
+      spinner.setAttribute('hidden', '');
+      // console.log(parks)
+      parksList = parks.data
+      console.log(parks)
+      spinner.setAttribute('hidden', '');
+      // console.log(parks)
+      parksList = parks.data
+      console.log(parks)
+      displayParks(parks);
+    });
+  });
+};
