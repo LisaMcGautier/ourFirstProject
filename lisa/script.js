@@ -4,26 +4,6 @@ $(document).ready(function () {
 
     var spinner = document.getElementById("spinner");
 
-    // function preloaderSpinner(display) {
-
-    //     if (restaurantsByCoordinates) {
-
-    //         //  $("#spinner").hide();
-    //         spinner.style.display = 'block';
-
-    //     } else if (restaurantsByCoordinates) {
-
-    //         //  $("#spinner").hide();
-    //         spinner.style.display = 'block';
-
-    //     }else {
-
-    //         //$("#spinner").show();
-    //         spinner.style.display = 'none';
-    //     }
-
-    // };
-
     // HTML5 geolocation pop-up message
 
     "use strict";
@@ -77,15 +57,6 @@ $(document).ready(function () {
         infoWindow.open(map);
     }   
     
-    function mapRestaurantLocation(restaurantName, restaurantLocation) {
-
-        console.log(restaurantName, restaurantLocation);
-
-        //============================================================================
-        // Use the address here to place the Restaurant marker in Google Maps...
-
-
-    }
     // IF latitude and longitude are retrieved from geolocation
 
     function restaurantsByCoordinates(latitude, longitude) {
@@ -115,34 +86,15 @@ $(document).ready(function () {
                 restaurantTile.attr("href", "#!");
                 restaurantTile.addClass("collection-item");
                 restaurantTile.html(restaurantName + "<br>" + restaurantLocation);
+                restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + restaurantLocation + "')");
 
-                restaurantTile.on("click", function () {
+                // restaurantTile.on("click", function () {
 
-                    mapRestaurantLocation(restaurantName, restaurantLocation);
+                //     mapRestaurantLocation(restaurantName, restaurantLocation);
 
-                });
+                // });
 
                 $("#restaurantList").append(restaurantTile);
-
-                // var restaurantName = $("<p>");
-                // restaurantName.text(response.businesses[i].name);
-                // $("#restaurantList").append(restaurantName);
-
-                // var restaurantLocation = $("<a>");
-                // restaurantLocation.text(response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
-
-                // $("#restaurantList").append(restaurantLocation);
-
-                // Needs to be a button or clickable element
-                // materialize collection??
-                // var restaurantTile = $("<a>");
-                // restaurantTile.attr("href", "#!");
-
-                // $("restaurantList").append(restaurantTile);
-
-                // Add event listener to restaurantName
-
-
 
             }
 
@@ -185,32 +137,15 @@ $(document).ready(function () {
                 restaurantTile.attr("href", "#!");
                 restaurantTile.addClass("collection-item");
                 restaurantTile.html(restaurantName + "<br>" + restaurantLocation);
+                restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + restaurantLocation + "')");
 
-                restaurantTile.on("click", function () {
+                // restaurantTile.on("click", function () {
 
-                    mapRestaurantLocation(restaurantName, restaurantLocation);
+                //     mapRestaurantLocation(restaurantName, restaurantLocation);
 
-                });
+                // });
 
                 $("#restaurantList").append(restaurantTile);
-
-                // var restaurantName = $("<p>");
-                // restaurantName.text(response.businesses[i].name);
-                // $("#restaurantList").append(restaurantName);
-
-                // var restaurantLocation = $("<a>");
-                // restaurantLocation.text(response.businesses[i].location.address1) + " " + (response.businesses[i].location.address2);
-
-                // $("#restaurantList").append(restaurantLocation);
-
-                // Needs to be a button or clickable element
-                // materialize collection??
-                // var restaurantTile = $("<a>");
-                // restaurantTile.attr("href", "#!");
-
-                // $("restaurantList").append(restaurantTile);
-
-
 
             }
 
@@ -220,27 +155,16 @@ $(document).ready(function () {
    
 });
 
-// Add event listener to restaurantName
 
-// $("#local-shop").on("click", function () {
-//     var address = $(this).val();
-//     console.log(address);
-// });
 
-// let button = document.getElementById("get-location");
-// let latitude = document.getElementById("latitude");
-// let longitude = document.getElementById("longitude");
+function mapRestaurantLocation(restaurantName, restaurantLocation) {
 
-// button.addEventListener("click", function() {
-//   navigator.geolocation.getCurrentPosition(function(position) {
-//     let lat = position.coords.latitude;
-//     let long = position.coords.longitude;
+    console.log(restaurantName, restaurantLocation);
 
-//     latitude.innerText = lat.toFixed(2);
-//     longitude.innerText = long.toFixed(2);
+    //============================================================================
+    // Use the address here to place the Restaurant marker in Google Maps...
 
-//     restaurantsByCoordinates(latitude, longitude);
 
-//   });
+}
 
-// });
+
