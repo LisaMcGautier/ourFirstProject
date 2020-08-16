@@ -32,8 +32,6 @@ $(document).ready(function () {
                     infoWindow.open(map);
                     map.setCenter(pos);
 
-                    // console.log(pos);
-
                     restaurantsByCoordinates(pos.lat, pos.lng);
 
                 },
@@ -55,13 +53,11 @@ $(document).ready(function () {
                 : "Error: Your browser doesn't support geolocation."
         );
         infoWindow.open(map);
-    }   
-    
+    }
+
     // IF latitude and longitude are retrieved from geolocation
 
     function restaurantsByCoordinates(latitude, longitude) {
-
-        // console.log(latitude, longitude);
 
         var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=" + latitude + "&longitude=" + longitude;
 
@@ -72,31 +68,7 @@ $(document).ready(function () {
             headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
         }).then(function (response) {
 
-            // console.log(response);
-            // console.log(response.businesses[0].coordinates.latitude);
-            // console.log(response.businesses[0].coordinates.longitude);
-
-            $("#restaurantList").empty();
-
-            for (var i = 0; i < 5; i++) {
-
-                spinner.style.display = 'none';
-
-                var restaurantTile = $("<a>");
-                var restaurantName = response.businesses[i].name;
-                var restaurantLocation = response.businesses[i].location.address1;
-                const pos = {
-                    lat: response.businesses[i].coordinates.latitude,
-                    lng: response.businesses[i].coordinates.longitude
-                };
-                restaurantTile.attr("href", "#!");
-                restaurantTile.addClass("collection-item");
-                restaurantTile.html(restaurantName + "<br>" + restaurantLocation);
-                restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + pos.lat + "', '" + pos.lng + "')");
-
-                $("#restaurantList").append(restaurantTile);
-
-            }
+            displayLocalRestaurants(response);
 
         });
 
@@ -123,36 +95,38 @@ $(document).ready(function () {
             headers: { "Authorization": "Bearer ohPvgVMciIBoJwVFMfrUyi-JDlIf_nnz9q4lNH5-IZiuF7MKZK5tmL3FMK40Nq7-DedmraddPUwsXEmAV26p6oRFQTr97kv4d_oN1pbIe54JjCaoCGFu-HvIuD0zX3Yx" }
         }).then(function (response) {
 
-            // console.log(response);
-            // console.log(response.businesses[0].coordinates.latitude);
-            // console.log(response.businesses[0].coordinates.longitude);
-
-            $("#restaurantList").empty();
-
-            for (var i = 0; i < 5; i++) {
-
-                spinner.style.display = 'none';
-
-                var restaurantTile = $("<a>");
-                var restaurantName = response.businesses[i].name;
-                var restaurantLocation = response.businesses[i].location.address1;
-                const pos = {
-                    lat: response.businesses[i].coordinates.latitude,
-                    lng: response.businesses[i].coordinates.longitude
-                };
-                restaurantTile.attr("href", "#!");
-                restaurantTile.addClass("collection-item");
-                restaurantTile.html(restaurantName + "<br>" + restaurantLocation);
-                restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + pos.lat + "', '" + pos.lng + "')");
-
-                $("#restaurantList").append(restaurantTile);
-
-            }
+            displayLocalRestaurants(response);
 
         });
 
     };
-   
+
+    function displayLocalRestaurants(response) {
+        $("#restaurantList").empty();
+
+        for (var i = 0; i < 5; i++) {
+
+            spinner.style.display = 'none';
+
+            var restaurantTile = $("<a>");
+            // Replace invalid characters, such as hyphens and apostrophes, with a space.
+            var restaurantName = response.businesses[i].name.replace(/[_\W]+/g, " ");
+            var restaurantLocation = response.businesses[i].location.address1;
+            const pos = {
+                lat: response.businesses[i].coordinates.latitude,
+                lng: response.businesses[i].coordinates.longitude
+            };
+            restaurantTile.attr("href", "#!");
+            restaurantTile.addClass("collection-item");
+            restaurantTile.html(restaurantName + "<br>" + restaurantLocation);
+            restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + pos.lat + "', '" + pos.lng + "')");
+
+            $("#restaurantList").append(restaurantTile);
+
+        }
+
+    };
+
 });
 
 function mapRestaurantLocation(restaurantName, restaurantLatitude, restaurantLongitude) {
