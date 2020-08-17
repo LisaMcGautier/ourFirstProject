@@ -151,7 +151,8 @@ including increasing the zoom level of the map.
 Needed to replace invalid characters from restaurantName, because hyphens and apostrophes break the JavaScript:
 `https://stackoverflow.com/questions/8979619/jquery-remove-special-characters-from-string-and-more`.
 
-Created new function `displayLocalRestaurants`, to DRY up the repetitive code within `getRestaurants(zipCode)` and `restaurantsByZip(zipCode)`.
+Created new function `displayLocalRestaurants`, to DRY up the repetitive code within 
+`restaurantsByCoordinates(latitude, longitude)` and `restaurantsByZip(zipCode)`.
 
 
 
