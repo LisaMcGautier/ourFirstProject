@@ -31,7 +31,7 @@ nav{
   background:#654321;
   height: 50px;
   font-family: 'Kaushan Script', cursive;
-
+  color: white;
 }  
 
 #restaurant-title {
@@ -49,8 +49,8 @@ nav{
 }
 
 #local-shop {
-    border: 3px solid #654321;
-    font-family:'Patrick Hand', cursive;
+  border: 3px solid #654321;
+  font-family:'Patrick Hand', cursive;
 }
 
 #location-directions {
@@ -67,4 +67,17 @@ nav{
   height: 100%;
   width:100%;
   height:345px;
+}
+
+
+.rowCenter{
+  width:20%; 
+    margin-left:40%; 
+    margin-right:45%
+}
+
+#end{
+  background:#654321;
+  text-align: center;
+  color: white;
 }

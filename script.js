@@ -27,8 +27,8 @@ $(document).ready(function () {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent("Location found.");
+                    // infoWindow.setPosition(pos);
+                    // infoWindow.setContent("Location found.");
                     infoWindow.open(map);
                     map.setCenter(pos);
 
@@ -118,7 +118,7 @@ $(document).ready(function () {
             };
             restaurantTile.attr("href", "#!");
             restaurantTile.addClass("collection-item");
-            restaurantTile.html(restaurantName + "<br>" + restaurantLocation);
+            restaurantTile.html("<b>" + restaurantName + "</b><br>" + restaurantLocation);
             restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + pos.lat + "', '" + pos.lng + "')");
 
             $("#restaurantList").append(restaurantTile);
