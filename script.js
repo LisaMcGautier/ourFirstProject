@@ -1,15 +1,19 @@
 $(document).ready(function () {
 
+    // Originally created the modal for our own geolocation modal.
+    // However, without this line, the html pop-up box for location permission does not appear.
     $('.modal').modal();
 
+    // Creates a variable for the preloader icon from Materialize.
     var spinner = document.getElementById("spinner");
 
     // HTML5 geolocation pop-up message
-
     "use strict";
     let map;
     initMap();
 
+    // Declares function `initMap` to check if location services have been allowed by the user,
+    // creates the map image on the page, and calls the function `restaurantsByCoordinates`.
     function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
             center: {
@@ -45,6 +49,7 @@ $(document).ready(function () {
         }
     }
 
+    // function handleLocationError in case geolocation services are declined by the user.
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(
@@ -55,8 +60,8 @@ $(document).ready(function () {
         infoWindow.open(map);
     }
 
-    // IF latitude and longitude are retrieved from geolocation
-
+    // IF latitude and longitude are retrieved from geolocation, function `restaurantsByCoordinates`
+    // makes the API call and calls the function `displayLocalRestaurants`.
     function restaurantsByCoordinates(latitude, longitude) {
 
         var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=coffee&latitude=" + latitude + "&longitude=" + longitude;
@@ -74,7 +79,7 @@ $(document).ready(function () {
 
     };
 
-    // Add event listener zip code submit
+    // Adds event listener to zip code submit button and calls `restaurantsByZip` function.
     $(".searchBtn").on("click", function () {
         var zipCode = $("#zip-input").val();
         console.log(zipCode);
@@ -83,6 +88,8 @@ $(document).ready(function () {
 
     });
 
+    // If geolocation is declined by user, this function will make the API call based on the zip code 
+    // that is entered by the user and call the function `displayLocalRestaurants`.
     function restaurantsByZip(zipCode) {
 
         var zipCode;
@@ -101,6 +108,7 @@ $(document).ready(function () {
 
     };
 
+    // This function will dynamically display the results of the API call.
     function displayLocalRestaurants(response) {
         $("#restaurantList").empty();
 
@@ -119,6 +127,8 @@ $(document).ready(function () {
             restaurantTile.attr("href", "#!");
             restaurantTile.addClass("collection-item");
             restaurantTile.html("<b>" + restaurantName + "</b><br>" + restaurantLocation);
+            // Assigns attributes to the tile so that the function `mapRestaurantLocation` can retrieve 
+            // the name and coordinates of the restaurant when the tile is clicked.
             restaurantTile.attr("onclick", "mapRestaurantLocation('" + restaurantName + "', '" + pos.lat + "', '" + pos.lng + "')");
 
             $("#restaurantList").append(restaurantTile);
@@ -129,6 +139,7 @@ $(document).ready(function () {
 
 });
 
+// This function will display the map of the restaurant area and place a marker at the location of the restaurant.
 function mapRestaurantLocation(restaurantName, restaurantLatitude, restaurantLongitude) {
 
     console.log(restaurantName);

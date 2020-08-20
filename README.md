@@ -154,6 +154,10 @@ Needed to replace invalid characters from restaurantName, because hyphens and ap
 Created new function `displayLocalRestaurants`, to DRY up the repetitive code within 
 `restaurantsByCoordinates(latitude, longitude)` and `restaurantsByZip(zipCode)`.
 
+8/20
+
+Added comments to `script.js`.
+
 
 
 
