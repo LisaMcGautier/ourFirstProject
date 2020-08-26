@@ -158,6 +158,15 @@ Created new function `displayLocalRestaurants`, to DRY up the repetitive code wi
 
 Added comments to `script.js`.
 
+![Screenshot (34)](https://user-images.githubusercontent.com/62854999/91252750-2dba9000-e72c-11ea-96cd-f01a619fcd77.png)
+![Screenshot (35)](https://user-images.githubusercontent.com/62854999/91252755-30b58080-e72c-11ea-9f7e-d76feea2c779.png)
+![Screenshot (36)](https://user-images.githubusercontent.com/62854999/91252764-33b07100-e72c-11ea-8571-eb0183b6ad63.png)
+![Screenshot (37)](https://user-images.githubusercontent.com/62854999/91252773-3743f800-e72c-11ea-8544-140f2cce10d6.png)
+![Screenshot (38)](https://user-images.githubusercontent.com/62854999/91252782-3ad77f00-e72c-11ea-8f08-17155f6b7f39.png)
+
+ https://github.com/LisaMcGautier/ourFirstProject
+ https://lisamcgautier.github.io/ourFirstProject
+
 
 
 
